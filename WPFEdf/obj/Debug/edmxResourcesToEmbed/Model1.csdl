@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="edfModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="identifiant" />
+    </Key>
+    <Property Name="identifiant" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ancienReleve" Type="Int32" Nullable="false" />
+    <Property Name="dernierReleve" Type="Int32" Nullable="false" />
+    <Property Name="idcontroleur" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="controleur" Relationship="Self.client_ibfk_1" FromRole="client" ToRole="controleur" />
+  </EntityType>
+  <EntityType Name="controleur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mdp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="statut" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.client_ibfk_1" FromRole="controleur" ToRole="client" />
+  </EntityType>
+  <Association Name="client_ibfk_1">
+    <End Role="controleur" Type="Self.controleur" Multiplicity="1" />
+    <End Role="client" Type="Self.client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="controleur">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="client">
+        <PropertyRef Name="idcontroleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="edfEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="client" EntityType="Self.client" />
+    <EntitySet Name="controleur" EntityType="Self.controleur" />
+    <AssociationSet Name="client_ibfk_1" Association="Self.client_ibfk_1">
+      <End Role="controleur" EntitySet="controleur" />
+      <End Role="client" EntitySet="client" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

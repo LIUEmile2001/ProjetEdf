@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="edfModelStoreContainer" CdmEntityContainer="edfEntities">
+    <EntitySetMapping Name="client">
+      <EntityTypeMapping TypeName="edfModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="identifiant" ColumnName="identifiant" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="ancienReleve" ColumnName="ancienReleve" />
+          <ScalarProperty Name="dernierReleve" ColumnName="dernierReleve" />
+          <ScalarProperty Name="idcontroleur" ColumnName="idcontroleur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="controleur">
+      <EntityTypeMapping TypeName="edfModel.controleur">
+        <MappingFragment StoreEntitySet="controleur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="mdp" ColumnName="mdp" />
+          <ScalarProperty Name="statut" ColumnName="statut" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

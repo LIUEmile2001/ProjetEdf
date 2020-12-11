@@ -1,0 +1,47 @@
+﻿<Window x:Class="WPFEdf.FNTControleur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFEdf"
+        mc:Ignorable="d"
+        Title="FNTControleur" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock Text="Gestion EDF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></TextBlock>
+        <TextBlock Text="Liste des clients" Grid.Row="1" FontSize="30"></TextBlock>
+
+        <ListBox Name="lstClients" Grid.Row="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding identifiant}" Width="50"></TextBlock>
+                        <TextBlock Text="{Binding nom}" Width="100"></TextBlock>
+                        <TextBlock Text="{Binding prenom}" Width="50"></TextBlock>
+                        <TextBlock Text="{Binding ancienReleve}" Width="50"></TextBlock>
+                        <TextBlock Text="{Binding dernierReleve}"></TextBlock>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Nouveau relevé"></TextBlock>
+            <TextBox Name="txtReleve"></TextBox>
+            <Button Content="Insérer un relevé" Name="btnReleve" Click="btnReleve_Click"></Button>
+            
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>
